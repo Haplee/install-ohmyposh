@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oh My Posh Installers — FranVi</title>
+    <meta name="description" content="Automatiza la instalación y configuración de Oh My Posh en Windows y Linux. Personaliza tu terminal al momento.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Elements for glassmorphism -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    
+    <main class="container">
+        <header class="hero">
+            <h1 class="title">Oh My <span class="gradient-text">Posh</span> Installers</h1>
+            <p class="subtitle">Scripts precisos y automatizados para configurar y embellecer tu terminal en segundos. Soporte nativo para Linux y Windows.</p>
+            <div class="cta-group">
+                <a href="#linux" class="btn btn-primary">Instalar en Linux</a>
+                <a href="#windows" class="btn btn-secondary">Instalar en Windows</a>
+            </div>
+        </header>
+
+        <section class="features glass-panel">
+            <div class="feature">
+                <h3>⚡ Todo en Uno</h3>
+                <p>Descarga Oh My Posh, inyecta la configuración en tu shell y descarga las fuentes Meslo Nerd Font necesarias.</p>
+            </div>
+            <div class="feature">
+                <h3>🐧 Inteligente en Linux</h3>
+                <p>Detecta automáticamente Bash o Zsh y añade las rutas correctas sin duplicar configuraciones.</p>
+            </div>
+            <div class="feature">
+                <h3>🪟 Nativo en Windows</h3>
+                <p>Interactúa con UAC para pedir permisos Administrator y muestra un tracker visual (GUI) en Python.</p>
+            </div>
+        </section>
+
+        <section id="linux" class="install-section glass-panel">
+            <h2>Linux (Bash / Zsh)</h2>
+            <p>Clona el repositorio e instala directamente desde tu consola:</p>
+            <div class="code-block">
+                <button class="copy-btn" onclick="copyCode('linux-code', this)">Copiar</button>
+                <code id="linux-code">git clone https://github.com/Haplee/install-ohmyposh.git
+cd install-ohmyposh/linux
+chmod +x install_linux.sh
+./install_linux.sh</code>
+            </div>
+            <p class="tip"><strong>Tip:</strong> Tras instalar, no olvides lanzar <code>source ~/.bashrc</code> o reiniciar tu terminal.</p>
+        </section>
+
+        <section id="windows" class="install-section glass-panel">
+            <h2>Windows (PowerShell)</h2>
+            <p>Usa la versión compilada como ejecutable o compílala tú mismo fácilmente utilizando Python.</p>
+            <div class="code-block single-line">
+                <button class="copy-btn" onclick="copyCode('win-code', this)">Copiar</button>
+                <code id="win-code">cd windows &amp;&amp; .\compilar_windows.bat</code>
+            </div>
+            <p class="tip">Asegúrate de ejecutar el resultado generado final <code>windows\dist\OhMyPosh_Installer.exe</code>. Pedirá permisos de Administrador para inyectar correctamente las fuentes MesloLGS NF.</p>
+        </section>
+
+        <footer class="glass-panel">
+            <p>Desarrollado con ♥ por FranVi. Tema configurado por defecto: <code>clean-detailed</code>.</p>
+        </footer>
+    </main>
+
+    <script>
+        function copyCode(elementId, btn) {
+            const codeText = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const originalText = btn.innerText;
+                btn.innerText = "¡Copiado!";
+                btn.classList.add("copied");
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.remove("copied");
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
